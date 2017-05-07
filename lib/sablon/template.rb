@@ -21,7 +21,7 @@ module Sablon
       Sablon::Numbering.instance.reset!
       env = Sablon::Environment.new(self, context)
       Zip.sort_entries = true # required to process document.xml before numbering.xml
-      Zip::OutputStream.write_buffer(StringIO.new) do |out|
+      Zip::OutputStream.write_buffer do |out|
         Zip::File.open(@path).each do |entry|
           entry_name = entry.name
           out.put_next_entry(entry_name)
